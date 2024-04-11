@@ -46,6 +46,10 @@ function wordInput($css_state="standard", $value="") {
     checkInput($i, $css_state="standard", $value="");
     
   }
+  echo '<input type="Submit" value="Guess"><br>';
+}
+
+  // 
   // for ($i = 1; $i <=5; $i++) {
   // if (isset($_POST["letter_".$i]) and !empty($_POST["letter_".$i])){
   //   if ($word[$i-1] == $_POST["letter_".$i]) {
@@ -58,9 +62,7 @@ function wordInput($css_state="standard", $value="") {
   //     }
   //   }
   // }
-  // change
-  echo '<input type="Submit" value="Guess"><br>';
-}
+  
 function checkInput($word, $i, $css_state="standard", $value="") {
   $guessWordArray = str_split($word);
   if (!isset($_POST["letter_".$i]) and empty($_POST["letter_".$i])){
