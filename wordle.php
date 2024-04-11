@@ -39,20 +39,36 @@
     echo "<br>";
       
     echo $randomWordTest;
+    $testWord = splitWord($randomWordTest);
+    echo "<br>" . $testWord[0];
+    $testLetter = $testWord[0];
       
   ?>
   <br><br>
-  <!-- <input type="Text" name="letter_1" maxlength="1" size="1">
-  <input type="Text" name="letter_2" maxlength="1" size="1">
-  <input type="Text" name="letter_3" maxlength="1" size="1">
-  <input type="Text" name="letter_4" maxlength="1" size="1">
-  <input type="Text" name="letter_5" maxlength="1" size="1"> -->
-  <!-- <input type="Submit" value="Guess"/> -->
+  <?php 
+  // if (isset($_POST["letter_1"]) and isset($_POST["letter_2"]) and isset($_POST["letter_3"]) and isset($_POST["letter_4"]) and isset($_POST["letter_5"])
+  // and !empty($_POST["letter_1"]) and !empty($_POST["letter_2"]) and !empty($_POST["letter_3"]) and !empty($_POST["letter_4"]) and !empty($_POST["letter_5"])){
+    if (!isset($_POST["letter_1"]) and empty($_POST["letter_1"])){
+  
+  //hier müssen die Informationen aus der $_POST Variable in die Datei geschrieben werden
+  //...wenn die Felder gesetzt sind...
+  // letterCheck($_POST["letter_1"], $testWord[0]);
+  inputGenerator(1, "standard", $_POST["letter_1"], $testLetter);
+
+    }
+  ?>
   <br>
   <?php 
+  
     // wordInput($css_state, $value, $word)
-    wordInput($randomWordTest);
-
+    // wordInput($randomWordTest);
+    // inputGenerator($index, $css_state="standard", $value, $letter, $word)
+    
+    // inputGenerator(2, $css_state="standard", "");
+    // inputGenerator(3, $css_state="standard", "");
+    // inputGenerator(4, $css_state="standard", "");
+    // inputGenerator(5, $css_state="standard", "");
+    echo '<input type="Submit" value="Guess"><br>';
   ?>
   </form>
 </body>

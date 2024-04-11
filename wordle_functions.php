@@ -39,14 +39,79 @@ function randomWord($array_variable) {
 
 // }
 
-function wordInput($css_state="standard", $value="") {
+// function wordInput($css_state="standard", $value="") {
   
 
-  for ($i = 1; $i <=5; $i++) {
-    checkInput($i, $css_state="standard", $value="");
-    
+//   for ($i = 1; $i <=5; $i++) {
+//     checkInput($i, $css_state="standard", $value="");
+//   }
+//   echo '<input type="Submit" value="Guess"><br>';
+// }
+
+function splitWord($word) {
+  $guessWordArray = str_split($word);
+  return $guessWordArray;
+}
+// , $second, $third, $fourth, $fifth, 
+function letterCheck($first, $word) {
+  switch (true) {
+    case $first == $word[0]:
+      echo "True";
+      $css_state="correct";
   }
+}
+
+function inputGenerator($index, $css_state, $value, $word) {
+  
+  echo '<input type="text" name="letter_' . $index . '" maxlength="1" size="1" class="' . $css_state . '" value="' . $value .'" required>'; 
+  if ($value == $word[0]) {
+    echo "True";
+    $css_state="correct";
+  }
+      
+  }
+   //   if ($word[intval($i)-1] == $_POST["letter_".$i]) {
+  //     $css_state = "correct";
+  //     $value = $_POST["letter_".$i];
+  //   }
+  //   else {
+  //     $css_state = "wrong";
+  //     $value = $_POST["letter_".$i];
+  //     }
+  
+  // }
+
+
+function wordInput($css_state="standard", $value="") {
+  $i = 0;
+  do {
+    checkInput($i, $css_state="standard", $value="");
+    $i++;
+
+  } while (!isset($_POST["letter_".$i]) and empty($_POST["letter_".$i]) and $i < 5);
+
   echo '<input type="Submit" value="Guess"><br>';
+}
+
+
+function checkInput($word, $i, $css_state="standard", $value="") {
+  $guessWordArray = str_split($word);
+
+  echo '<input type="text" name="letter_' . $i . '" maxlength="1" size="1" class="' . $css_state . '" value="' . $value .'">'; 
+  
+  if (isset($_POST["letter_".$i]) and !empty($_POST["letter_".$i])){
+
+
+    if ($guessWordArray[intval($i)] == $_POST["letter_".$i]) {
+      $css_state = "correct";
+      $value = $_POST["letter_".$i];
+    }
+    else {
+      $css_state = "wrong";
+      $value = $_POST["letter_".$i];
+      }
+  echo '<input type="text" name="letter_' . $i . '" maxlength="1" size="1" class="' . $css_state . '" value="' . $value .'">'; 
+  }
 }
 
   // 
@@ -62,25 +127,6 @@ function wordInput($css_state="standard", $value="") {
   //     }
   //   }
   // }
-  
-function checkInput($word, $i, $css_state="standard", $value="") {
-  $guessWordArray = str_split($word);
-  if (!isset($_POST["letter_".$i]) and empty($_POST["letter_".$i])){
-  echo '<input type="text" name="letter_' . $i . '" maxlength="1" size="1" class="' . $css_state . '" value="' . $value .'">'; 
-  }
-  elseif (isset($_POST["letter_".$i]) and !empty($_POST["letter_".$i])){
-    if ($word[$i-1] == $_POST["letter_".$i]) {
-      $css_state = "correct";
-      $value = $_POST["letter_".$i];
-    }
-    else {
-      $css_state = "wrong";
-      $value = $_POST["letter_".$i];
-      }
-  echo '<input type="text" name="letter_' . $i . '" maxlength="1" size="1" class="' . $css_state . '" value="' . $value .'">'; 
-  }
-}
-
   // for ($i = 1; $i <=5; $i++) {
   //   echo '<input type="text" name="letter_' . $i . '" maxlength="1" size="1" class="' . $css_state . '" value="' . $value .'">';
   // }
@@ -98,20 +144,23 @@ function checkInput($word, $i, $css_state="standard", $value="") {
 
 
 
-// function wordInput($word) {
-//   $guessWordArray = str_split($word);
-//   switch (TRUE) {
-//     case (!isset($_POST["letter_1"]) and empty($_POST["letter_1"])):
-//       generateInput($i=1);
-//     case (!isset($_POST["letter_2"]) and empty($_POST["letter_2"])):
-//       generateInput($i=2);
-//     case (!isset($_POST["letter_3"]) and empty($_POST["letter_3"])):
-//       generateInput($i=3);
-//     case (!isset($_POST["letter_4"]) and empty($_POST["letter_4"])):
-//       generateInput($i=4);
-//     case (!isset($_POST["letter_5"]) and empty($_POST["letter_5"])):
-//       generateInput($i=5);
-//   }
+  // switch (TRUE) {
+  //   case ($guessWordArray[0] == $_POST["letter_".$i]):
+  //     $css_state = "correct";
+  //     $value = $_POST["letter_".$i];
+  //   case ($guessWordArray[1] == $_POST["letter_".$i]):
+  //     $css_state = "correct";
+  //     $value = $_POST["letter_".$i];
+  //   case ($guessWordArray[2] == $_POST["letter_".$i]):
+  //     $css_state = "correct";
+  //     $value = $_POST["letter_".$i];
+  //   case ($guessWordArray[3] == $_POST["letter_".$i]):
+  //     $css_state = "correct";
+  //     $value = $_POST["letter_".$i];
+  //   case ($guessWordArray[4] == $_POST["letter_".$i]):
+  //     $css_state = "correct";
+  //     $value = $_POST["letter_".$i];
+  // }
   
 
 //   echo '<input type="Submit" value="Guess"><br>';
