@@ -58,7 +58,6 @@ function wordInput($css_state="standard", $value="") {
   //     }
   //   }
   // }
-  // test
   echo '<input type="Submit" value="Guess"><br>';
 }
 function checkInput($word, $i, $css_state="standard", $value="") {
